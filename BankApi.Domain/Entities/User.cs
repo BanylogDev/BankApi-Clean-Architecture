@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BankApi.Domain.Entities
+{
+    public class User
+    {
+        public int Id { get; set; }
+        [Required]
+        [StringLength(4, MinimumLength = 16)]
+        public string Name { get; set; } = string.Empty;
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+        [Required]
+        public string Password { get; set; } = string.Empty;
+        [Required]
+        public string PhoneNumber { get; set; } = string.Empty;
+        public string Role { get; set; } = "User";
+        public decimal Balance { get; set; } = 0;
+        public DateTime CreatedAt { get; set; }
+
+        public string AcessToken { get; set; } = string.Empty;
+        public string RefreshToken { get; set; } = string.Empty;
+        public DateTime RefreshTokenExpiryTime { get; set; }
+    }
+}
