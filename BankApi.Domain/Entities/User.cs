@@ -11,7 +11,7 @@ namespace BankApi.Domain.Entities
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(4, MinimumLength = 16)]
+        [StringLength(16, MinimumLength = 4)]
         public string Name { get; set; } = string.Empty;
         [Required]
         [EmailAddress]
