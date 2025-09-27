@@ -38,7 +38,7 @@ namespace BankApi.Application.UseCases.UserCases
             var refreshToken = _jwtService.GenerateRefreshToken();
 
             user.RefreshToken = refreshToken;
-            user.AcessToken = token;
+            user.AccessToken = token;
             user.RefreshTokenExpiryTime = DateTime.UtcNow.AddDays(1);
             
             await _authRepo.SaveChangesAsync();

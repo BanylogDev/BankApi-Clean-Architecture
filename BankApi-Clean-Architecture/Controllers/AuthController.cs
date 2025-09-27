@@ -30,7 +30,7 @@ namespace BankApi_Clean_Architecture.Controllers
             var user = await _loginUserUseCase.ExecuteAsync(dto);
             if (user == null) return Unauthorized("Invalid username or password");
 
-            return Ok(new { message = "Login successful", user.Id, user.Name, user.Email, user.Balance, user.AcessToken, user.RefreshToken });
+            return Ok(new { message = "Login successful", user.Id, user.Name, user.Email, user.Balance, user.AccessToken, user.RefreshToken });
         }
 
 
