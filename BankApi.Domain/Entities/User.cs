@@ -24,7 +24,7 @@ namespace BankApi.Domain.Entities
         public decimal Balance { get; set; } = 0;
         public DateTime CreatedAt { get; set; }
 
-        public string AcessToken { get; set; } = string.Empty;
+        public string AccessToken { get; set; } = string.Empty;
         public string RefreshToken { get; set; } = string.Empty;
         public DateTime RefreshTokenExpiryTime { get; set; }
     }
