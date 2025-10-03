@@ -20,5 +20,12 @@ services:
       - db_data:/var/lib/mysql
     ports:
       - "3308:3306"
+  bankapi.redis:
+    container_name: bankapi.redis
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+
 volumes:
   db_data:
