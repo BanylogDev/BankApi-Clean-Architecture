@@ -5,6 +5,7 @@ using BankApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -26,7 +27,7 @@ namespace BankApi.Infrastructure.Repositories
 
         public async Task<List<Transactions>> GetTransactionsById(int userId)
         {
-
+            
             var cacheKey = $"transactions:{userId}:recent";
 
             // check cache

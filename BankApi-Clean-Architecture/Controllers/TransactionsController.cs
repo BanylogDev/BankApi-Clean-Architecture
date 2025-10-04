@@ -2,6 +2,7 @@
 using BankApi.Application.UseCases.Interfaces.ITransactions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BankApi_Clean_Architecture.Controllers
 {
@@ -47,12 +48,19 @@ namespace BankApi_Clean_Architecture.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPersonalTransactions(int id)
         {
+
+            var stopwatch = Stopwatch.StartNew();
+
             var transactions = await _getTransactionUseCase.ExecuteAsync(id);
 
             if (transactions == null)
             {
                 return NotFound(new { message = "Error, not found!" });
             }
+            
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.ElapsedMilliseconds);
 
             return Ok(new
             {
