@@ -2,6 +2,7 @@
 using BankApi.Application.UseCases.Interfaces.IUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace BankApi_Clean_Architecture.Controllers
 {
@@ -59,10 +60,16 @@ namespace BankApi_Clean_Architecture.Controllers
         public async Task<IActionResult> GetUserInfo(int id)
         {
 
+            var stopwatch = Stopwatch.StartNew();   
+
             var user = await _getUserUseCase.ExecuteAsync(id);
 
             if (user == null)
                 return NotFound(new { message = $"User with id {id} not found" });
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.ElapsedMilliseconds);
 
             return Ok(new { message = $"{user?.Name}'s Info,", user?.Name, user?.Email, user?.PhoneNumber, user?.Role, user?.CreatedAt });
         }
