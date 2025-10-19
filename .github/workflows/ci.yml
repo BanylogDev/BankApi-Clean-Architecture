@@ -23,15 +23,15 @@ jobs:
 
       # Restore dependencies
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore BankApi-Clean-Architecture.sln
 
       # Build the solution
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build BankApi-Clean-Architecture.sln --no-restore --configuration Release
 
       # Run unit tests
       - name: Run tests
-        run: dotnet test --no-build --verbosity normal --configuration Release
+        run: dotnet test BankApi-Clean-Architecture.sln --no-build --verbosity normal --configuration Release
 
       # Optional: Upload test results
       - name: Publish Test Results
